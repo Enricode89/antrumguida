@@ -1,0 +1,1480 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Antrum Loft — Guida Ospiti</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+
+  :root {
+    --cream:   #F0EBE3;
+    --cream2:  #E8E0D4;
+    --beige:   #D8CEC0;
+    --dark:    #2A2018;
+    --brown:   #3A2A1A;
+    --terra:   #B85C38;
+    --terra2:  #D4784A;
+    --sage:    #9A7040;
+    --gold:    #9A7040;
+    --gold2:   #C49A60;
+    --mid:     #7A6A58;
+    --light:   #EDE4D8;
+    --white:   #FAF7F2;
+    --shadow:  rgba(42,32,24,0.09);
+    --shadow2: rgba(42,32,24,0.16);
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--dark);
+    max-width: 430px;
+    margin: 0 auto;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── SCREENS ───────────────────────────────────── */
+  .screen {
+    display: none;
+    min-height: 100vh;
+    background: var(--cream);
+    animation: fadeIn 0.32s ease;
+  }
+  .screen.active { display: block; }
+
+  @keyframes fadeIn {
+    from { opacity:0; transform:translateX(18px); }
+    to   { opacity:1; transform:translateX(0); }
+  }
+  @keyframes fadeBack {
+    from { opacity:0; transform:translateX(-18px); }
+    to   { opacity:1; transform:translateX(0); }
+  }
+  .screen.back-anim { animation: fadeBack 0.28s ease; }
+
+  /* ── TOP NAV BAR ──────────────────────────────── */
+  .topbar {
+    position: sticky; top: 0; z-index: 100;
+    background: var(--white);
+    border-bottom: 1px solid var(--beige);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 14px 20px;
+    backdrop-filter: blur(10px);
+  }
+  .topbar-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px; font-weight: 700; letter-spacing: 3px;
+    color: var(--dark);
+  }
+  .topbar-sub { font-size: 11px; color: var(--mid); font-weight: 400; }
+  .back-btn {
+    display: flex; align-items: center; gap: 6px;
+    background: none; border: none; cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px; color: var(--terra); font-weight: 500;
+    padding: 6px 0;
+  }
+  .back-btn svg { width:16px; height:16px; }
+
+  /* ── HERO ──────────────────────────────────────── */
+  .hero {
+    position: relative;
+    height: 260px;
+    background: #1E1610;
+    overflow: hidden;
+    display: flex; flex-direction: column;
+    justify-content: flex-end;
+    padding: 28px 24px 24px;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      repeating-linear-gradient(105deg, transparent, transparent 2px, rgba(255,255,255,0.015) 2px, rgba(255,255,255,0.015) 4px),
+      repeating-linear-gradient(15deg, transparent, transparent 3px, rgba(255,255,255,0.01) 3px, rgba(255,255,255,0.01) 6px);
+  }
+  .hero::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(154,112,64,0.18) 0%, transparent 50%, rgba(184,92,56,0.10) 100%);
+  }
+  .hero-chip {
+    display: inline-flex; align-items: center; gap: 5px;
+    background: rgba(196,154,96,0.15);
+    border: 1px solid rgba(196,154,96,0.3);
+    border-radius: 20px; padding: 4px 10px;
+    font-size: 10px; font-weight: 600; color: #C49A60;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    margin-bottom: 10px; width: fit-content;
+    position: relative; z-index: 1;
+  }
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px; font-weight: 700;
+    color: #F0EBE3; line-height: 1.1;
+    margin-bottom: 4px;
+    position: relative; z-index: 1;
+  }
+  .hero-title em {
+    font-style: italic; color: #C49A60;
+  }
+  .hero-addr {
+    font-size: 12px; color: rgba(240,235,227,0.45);
+    font-weight: 400; letter-spacing: 0.3px;
+    position: relative; z-index: 1;
+  }
+  .hero-superhost {
+    position: absolute; top: 20px; right: 20px; z-index: 1;
+    background: rgba(196,154,96,0.18);
+    border: 1px solid rgba(196,154,96,0.5);
+    border-radius: 6px; padding: 5px 10px;
+    font-size: 10px; font-weight: 700; color: #C49A60;
+    letter-spacing: 1px;
+  }
+
+  /* ── QUICK INFO STRIP ──────────────────────────── */
+  .quick-strip {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    background: #261C12;
+    padding: 14px 8px;
+    gap: 0;
+  }
+  .quick-item {
+    display: flex; flex-direction: column; align-items: center;
+    gap: 4px; padding: 0 4px;
+  }
+  .quick-item + .quick-item {
+    border-left: 1px solid rgba(255,255,255,0.08);
+  }
+  .quick-icon { font-size: 16px; }
+  .quick-label { font-size: 8.5px; color: rgba(240,235,227,0.40); text-transform: uppercase; letter-spacing: 0.8px; }
+  .quick-val   { font-size: 11px; font-weight: 600; color: #F0EBE3; text-align: center; }
+
+  /* ── SECTION TITLE ─────────────────────────────── */
+  .section-head {
+    padding: 24px 20px 10px;
+  }
+  .section-head h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px; font-weight: 700; color: var(--dark);
+  }
+  .section-head p {
+    font-size: 13px; color: var(--mid); margin-top: 3px;
+  }
+
+  /* ── CARD ──────────────────────────────────────── */
+  .card {
+    background: var(--white);
+    border-radius: 16px;
+    margin: 0 16px 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px var(--shadow);
+    cursor: pointer;
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+    border: 1px solid var(--beige);
+  }
+  .card:active { transform: scale(0.98); box-shadow: 0 1px 6px var(--shadow); }
+
+  .card-inner {
+    display: flex; align-items: center;
+    padding: 16px;
+    gap: 14px;
+  }
+  .card-icon-wrap {
+    width: 48px; height: 48px; border-radius: 12px;
+    background: var(--cream2);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px; flex-shrink: 0;
+  }
+  .card-icon-wrap.terra { background: #FBE8DF; }
+  .card-icon-wrap.sage  { background: #E4EBE0; }
+  .card-icon-wrap.gold  { background: #FBF0DA; }
+  .card-icon-wrap.dark  { background: var(--dark); }
+
+  .card-text { flex: 1; }
+  .card-title { font-size: 15px; font-weight: 600; color: var(--dark); margin-bottom: 2px; }
+  .card-desc  { font-size: 12px; color: var(--mid); line-height: 1.4; }
+  .card-arrow {
+    width: 28px; height: 28px; border-radius: 50%;
+    background: var(--cream2);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .card-arrow svg { width:13px; height:13px; color: var(--terra); }
+
+  /* ── INFO ROWS ─────────────────────────────────── */
+  .info-row {
+    display: flex; align-items: center;
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--cream2);
+    gap: 14px;
+  }
+  .info-row:last-child { border-bottom: none; }
+  .info-icon {
+    width: 36px; height: 36px; border-radius: 10px;
+    background: var(--cream2);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; flex-shrink: 0;
+  }
+  .info-label { font-size: 11px; color: var(--mid); font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px; }
+  .info-val   { font-size: 14px; color: var(--dark); font-weight: 600; margin-top: 1px; }
+
+  /* ── PLACE CARD ────────────────────────────────── */
+  .place-card {
+    background: var(--white);
+    border-radius: 16px;
+    margin: 0 16px 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px var(--shadow);
+    border: 1px solid var(--beige);
+  }
+  .place-header {
+    padding: 16px 16px 10px;
+    display: flex; align-items: flex-start; gap: 12px;
+  }
+  .place-emoji {
+    width: 44px; height: 44px; border-radius: 12px;
+    background: var(--cream2);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px; flex-shrink: 0;
+  }
+  .place-name  { font-size: 15px; font-weight: 700; color: var(--dark); margin-bottom: 3px; }
+  .place-desc  { font-size: 12.5px; color: var(--mid); line-height: 1.5; padding: 0 16px 12px; }
+  .place-link  {
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    margin: 0 16px 14px;
+    background: var(--cream2);
+    border-radius: 10px; padding: 10px;
+    font-size: 12px; font-weight: 600; color: var(--terra);
+    text-decoration: none; cursor: pointer;
+    border: 1px solid var(--beige);
+    transition: background 0.15s;
+  }
+  .place-link:active { background: var(--beige); }
+
+  /* ── RESTAURANT CARD ───────────────────────────── */
+  .cat-head {
+    padding: 20px 20px 8px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .cat-head span { font-size: 20px; }
+  .cat-head h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px; font-weight: 700; color: var(--dark);
+  }
+
+  .rest-card {
+    background: var(--white);
+    border-radius: 12px;
+    margin: 0 16px 8px;
+    padding: 12px 14px;
+    display: flex; align-items: center; gap: 12px;
+    border: 1px solid var(--beige);
+    box-shadow: 0 1px 6px var(--shadow);
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+  .rest-card:active { background: var(--cream2); }
+  .rest-left { flex: 1; }
+  .rest-name { font-size: 13.5px; font-weight: 600; color: var(--dark); }
+  .rest-desc { font-size: 11.5px; color: var(--mid); margin-top: 2px; line-height: 1.4; }
+  .rest-right { display: flex; flex-direction: column; align-items: flex-end; gap: 4px; }
+  .rest-price {
+    font-size: 12px; font-weight: 700; color: var(--gold);
+    background: #FBF0DA; border-radius: 6px; padding: 2px 7px;
+  }
+  .rest-maps {
+    font-size: 11px; color: var(--terra); font-weight: 500;
+  }
+
+  /* ── TRANSPORT CARD ────────────────────────────── */
+  .transport-card {
+    background: var(--white);
+    border-radius: 14px;
+    margin: 0 16px 10px;
+    padding: 14px 16px;
+    border: 1px solid var(--beige);
+    box-shadow: 0 1px 8px var(--shadow);
+  }
+  .transport-head {
+    display: flex; align-items: center; gap: 10px; margin-bottom: 10px;
+  }
+  .transport-ico {
+    width: 38px; height: 38px; border-radius: 10px;
+    background: var(--cream2);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 19px;
+  }
+  .transport-title { font-size: 14px; font-weight: 700; color: var(--dark); }
+  .transport-items { display: flex; flex-direction: column; gap: 5px; }
+  .transport-item  { font-size: 12.5px; color: var(--mid); line-height: 1.4; padding-left: 4px; }
+
+  /* ── BOTTOM NAV ────────────────────────────────── */
+  .bottom-nav {
+    position: fixed; bottom: 0; left: 50%; transform: translateX(-50%);
+    width: 100%; max-width: 430px;
+    background: var(--white);
+    border-top: 1px solid var(--beige);
+    display: flex; justify-content: space-around;
+    padding: 10px 0 calc(10px + env(safe-area-inset-bottom));
+    z-index: 200;
+    box-shadow: 0 -4px 20px var(--shadow);
+  }
+  .nav-btn {
+    display: flex; flex-direction: column; align-items: center; gap: 3px;
+    background: none; border: none; cursor: pointer;
+    padding: 4px 16px; border-radius: 10px;
+    transition: background 0.15s;
+    min-width: 60px;
+  }
+  .nav-btn:active { background: var(--cream2); }
+  .nav-btn .nav-ico { font-size: 20px; }
+  .nav-btn .nav-lbl { font-size: 9.5px; font-weight: 500; color: var(--mid); }
+  .nav-btn.active .nav-lbl { color: var(--terra); font-weight: 700; }
+  .nav-btn.active .nav-ico { filter: none; }
+
+  /* ── SPACER for bottom nav ─────────────────────── */
+  .bottom-space { height: 80px; }
+
+  /* ── DIVIDER ───────────────────────────────────── */
+  .divider { height: 1px; background: var(--cream2); margin: 4px 20px; }
+
+  /* ── WELCOME MESSAGE ───────────────────────────── */
+  .welcome-box {
+    background: linear-gradient(135deg, #261C12 0%, #3A2A1A 100%);
+    margin: 14px 16px;
+    border-radius: 16px;
+    padding: 18px;
+    color: var(--white);
+  }
+  .welcome-box h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px; margin-bottom: 6px; color: #F0EBE3;
+  }
+  .welcome-box p { font-size: 12.5px; color: rgba(240,235,227,0.7); line-height: 1.6; }
+  .welcome-box .host-badge {
+    display: inline-flex; align-items: center; gap: 5px;
+    background: rgba(196,154,96,0.18); border: 1px solid rgba(196,154,96,0.35);
+    border-radius: 20px; padding: 4px 10px; margin-top: 10px;
+    font-size: 10px; font-weight: 700; color: #C49A60; letter-spacing: 0.5px;
+  }
+
+  /* ── SECTION PADDING ───────────────────────────── */
+  .px { padding: 0 16px; }
+  .pt { padding-top: 16px; }
+
+</style>
+</head>
+<body>
+
+<div id="lang-switcher" style="position:fixed;top:12px;right:16px;z-index:999;pointer-events:none;">
+  <div style="pointer-events:all;display:flex;background:var(--white);border:1px solid var(--beige);border-radius:50px;overflow:hidden;box-shadow:0 2px 10px var(--shadow);">
+    <button onclick="setLang('it')" id="btn-it" style="padding:7px 18px;font-size:12px;font-weight:700;border:none;cursor:pointer;background:var(--terra);color:#fff;font-family:'DM Sans',sans-serif;transition:all 0.2s;">🇮🇹 IT</button>
+    <button onclick="setLang('en')" id="btn-en" style="padding:7px 18px;font-size:12px;font-weight:700;border:none;cursor:pointer;background:transparent;color:var(--mid);font-family:'DM Sans',sans-serif;transition:all 0.2s;">🇬🇧 EN</button>
+  </div>
+</div>
+
+
+<div id="home" class="screen lang-it active">
+
+  <div class="hero">
+    <div class="hero-superhost">★ SUPERHOST</div>
+    <div class="hero-chip">✦ CENTRO STORICO · SALERNO</div>
+    <div class="hero-title">Antrum<br><em>Loft</em></div>
+    <div class="hero-addr">Via Torquato Tasso 31 — Salerno</div>
+  </div>
+
+  <div class="quick-strip">
+    <div class="quick-item">
+      <div class="quick-icon">🔑</div>
+      <div class="quick-label">Check-in</div>
+      <div class="quick-val">15:00</div>
+    </div>
+    <div class="quick-item">
+      <div class="quick-icon">🚪</div>
+      <div class="quick-label">Check-out</div>
+      <div class="quick-val">10:00</div>
+    </div>
+    <div class="quick-item">
+      <div class="quick-icon">📶</div>
+      <div class="quick-label">WiFi</div>
+      <div class="quick-val">718 Mbps</div>
+    </div>
+    <div class="quick-item" style="cursor:pointer" onclick="window.open('https://www.google.com/maps/dir/?api=1&destination=Via+Torquato+Tasso+31,+84121+Salerno','_blank')">
+      <div class="quick-icon">🧭</div>
+      <div class="quick-label">Naviga</div>
+      <div class="quick-val">Maps</div>
+    </div>
+  </div>
+
+  <div class="welcome-box">
+    <h3>Benvenuto! 👋</h3>
+    <p>Siamo Antrum, due fratelli che hanno creato questo loft nel cuore storico di Salerno. Siamo sempre disponibili per qualsiasi esigenza!</p>
+    <div class="host-badge">★ Enrico &amp; Vincenzo</div>
+  </div>
+
+  <div class="section-head">
+    <h2>Esplora la guida</h2>
+    <p>Tutto quello che ti serve in un tap</p>
+  </div>
+
+  <div class="card" onclick="goTo('soggiorno')">
+    <div class="card-inner">
+      <div class="card-icon-wrap terra">🛏️</div>
+      <div class="card-text">
+        <div class="card-title">Il tuo soggiorno</div>
+        <div class="card-desc">Check-in, regole, vasca idromassaggio</div>
+      </div>
+      <div class="card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></div>
+    </div>
+  </div>
+
+  <div class="card" onclick="goTo('attrazioni')">
+    <div class="card-inner">
+      <div class="card-icon-wrap sage">🗺️</div>
+      <div class="card-text">
+        <div class="card-title">Attrazioni di Salerno</div>
+        <div class="card-desc">I luoghi imperdibili a pochi passi</div>
+      </div>
+      <div class="card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></div>
+    </div>
+  </div>
+
+  <div class="card" onclick="goTo('ristoranti')">
+    <div class="card-inner">
+      <div class="card-icon-wrap gold">🍽️</div>
+      <div class="card-text">
+        <div class="card-title">Dove mangiare</div>
+        <div class="card-desc">Ristoranti, pizzerie, bar selezionati</div>
+      </div>
+      <div class="card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></div>
+    </div>
+  </div>
+
+  <div class="card" onclick="goTo('trasporti')">
+    <div class="card-inner">
+      <div class="card-icon-wrap dark">🚀</div>
+      <div class="card-text">
+        <div class="card-title">Come muoversi</div>
+        <div class="card-desc">Treno, traghetti, taxi, aeroporto</div>
+      </div>
+      <div class="card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></div>
+    </div>
+  </div>
+
+  <div class="bottom-space"></div>
+</div>
+
+<div id="soggiorno" class="screen lang-it">
+
+  <div class="topbar">
+    <button class="back-btn" onclick="goBack('home')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg>
+      Home
+    </button>
+    <div style="text-align:right">
+      <div class="topbar-brand">ANTRUM</div>
+      <div class="topbar-sub">Loft &amp; Suite</div>
+    </div>
+  </div>
+
+  <div class="section-head">
+    <h2>Il tuo soggiorno 🛏️</h2>
+    <p>Tutto quello che devi sapere</p>
+  </div>
+
+  <div style="background:var(--white);border-radius:16px;margin:0 16px 14px;border:1px solid var(--beige);overflow:hidden;box-shadow:0 2px 10px var(--shadow)">
+    <div class="info-row">
+      <div class="info-icon">🔑</div>
+      <div><div class="info-label">Check-in</div><div class="info-val">dalle 15:00</div></div>
+    </div>
+    <div class="info-row">
+      <div class="info-icon">🚪</div>
+      <div><div class="info-label">Check-out</div><div class="info-val">entro le 10:00</div></div>
+    </div>
+    <div class="info-row">
+      <div class="info-icon">👥</div>
+      <div><div class="info-label">Ospiti massimi</div><div class="info-val">2 persone</div></div>
+    </div>
+    <div class="info-row">
+      <div class="info-icon">📶</div>
+      <div><div class="info-label">WiFi · Fibra</div><div class="info-val">718 Mbps</div><div class="info-label" style="margin-top:3px;font-size:12px;color:var(--dark);font-weight:600;letter-spacing:0.5px;font-family:monospace;text-transform:none">📶 TIM-38262099</div><div class="info-label" style="margin-top:2px;font-size:12px;color:var(--dark);font-weight:600;letter-spacing:0.5px;font-family:monospace;text-transform:none">🔑 dT34tzUZQUy54D6bADhDkKAA</div></div>
+    </div>
+    <div class="info-row">
+      <div class="info-icon">🔒</div>
+      <div><div class="info-label">Accesso</div><div class="info-val">Smart Lock autonomo</div></div>
+    </div>
+    <div class="info-row">
+      <div class="info-icon">📺</div>
+      <div><div class="info-label">Smart TV</div><div class="info-val">50 pollici</div></div>
+    </div>
+  </div>
+
+  <div class="section-head" style="padding-top:8px">
+    <h2>Vasca Idromassaggio 🛁</h2>
+  </div>
+  <div style="background:var(--white);border-radius:16px;margin:0 16px 14px;border:1px solid var(--beige);padding:18px;box-shadow:0 2px 10px var(--shadow)">
+    <p style="font-size:13.5px;color:var(--mid);line-height:1.7">La vasca idromassaggio angolare è posizionata all'interno di un arco in pietra viva, proprio di fronte al letto matrimoniale. Un momento di relax assoluto nel cuore storico di Salerno.</p>
+  </div>
+
+
+  <div class="section-head" style="padding-top:8px">
+    <h2>Come effettuare il check-out 🚪</h2>
+  </div>
+  <div style="background:var(--white);border-radius:16px;margin:0 16px 14px;border:1px solid var(--beige);overflow:hidden;box-shadow:0 2px 10px var(--shadow)">
+    <div class="info-row">
+      <div class="info-icon">🛏️</div>
+      <div><div class="info-label">Asciugamani</div><div class="info-val">Radunare tutti gli asciugamani usati sul letto</div></div>
+    </div>
+    <div class="info-row">
+      <div class="info-icon">🔌</div>
+      <div><div class="info-label">Spegnere tutto</div><div class="info-val">Accertarsi che tutto sia spento</div></div>
+    </div>
+    <div class="info-row" style="border-bottom:none">
+      <div class="info-icon">🗝️</div>
+      <div><div class="info-label">Restituire le chiavi</div><div class="info-val">Posizionare le chiavi nel Locker con lo stesso codice di accesso</div></div>
+    </div>
+  </div>
+
+  <div class="section-head" style="padding-top:8px">
+    <h2>Regole della casa 📋</h2>
+  </div>
+  <div style="background:var(--white);border-radius:16px;margin:0 16px 14px;border:1px solid var(--beige);padding:0;box-shadow:0 2px 10px var(--shadow);overflow:hidden">
+    <div class="info-row">
+      <div class="info-icon">🚭</div>
+      <div><div class="info-label">Fumo</div><div class="info-val">Non consentito</div></div>
+    </div>
+    <div class="info-row">
+      <div class="info-icon">🐾</div>
+      <div><div class="info-label">Animali</div><div class="info-val">Non ammessi</div></div>
+    </div>
+  </div>
+
+
+  <div class="section-head" style="padding-top:8px">
+    <h2>Come raggiungerci 📍</h2>
+  </div>
+  <div style="background:var(--white);border-radius:16px;margin:0 16px 14px;border:1px solid var(--beige);overflow:hidden;box-shadow:0 2px 10px var(--shadow)">
+    <a href="https://maps.app.goo.gl/45ZJPDawAuE7FJzu8" target="_blank" class="info-row" style="text-decoration:none;display:flex">
+      <div class="info-icon">🚂</div>
+      <div style="flex:1"><div class="info-label">Dalla Stazione Treni</div><div class="info-val" style="color:var(--terra)">Apri percorso →</div></div>
+    </a>
+    <a href="https://maps.app.goo.gl/BsSfTGPr7tJrZS6G7" target="_blank" class="info-row" style="text-decoration:none;display:flex">
+      <div class="info-icon">⛵</div>
+      <div style="flex:1"><div class="info-label">Dal Molo Manfredi</div><div class="info-val" style="color:var(--terra)">Apri percorso →</div></div>
+    </a>
+    <a href="https://maps.app.goo.gl/j6RhLWQMJ8EG2cXh9" target="_blank" class="info-row" style="text-decoration:none;display:flex;border-bottom:none">
+      <div class="info-icon">🏛️</div>
+      <div style="flex:1"><div class="info-label">Da Piazza della Concordia</div><div class="info-val" style="color:var(--terra)">Apri percorso →</div></div>
+    </a>
+  </div>
+
+  <div class="section-head" style="padding-top:8px">
+    <h2>Contatti host 💬</h2>
+  </div>
+  <div style="margin:0 16px 10px;background:linear-gradient(135deg,#261C12,#3A2A1A);border-radius:18px;padding:20px 18px;display:flex;align-items:center;gap:16px;">
+    <div style="width:62px;height:62px;background:#3A2A1A;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:30px;flex-shrink:0;">👨‍💼</div>
+    <div>
+      <div style="font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:#F7F3ED;">Enrico & Vincenzo</div>
+      <div style="font-size:13px;color:#C49A60;margin-top:4px;">★★★★★ 5,0 · Superhost</div>
+      <div style="font-size:12px;color:rgba(247,243,237,0.5);margin-top:3px;">Risponde entro 1 ora · 100% risposta</div>
+      <div style="display:inline-block;margin-top:8px;background:transparent;border:1px solid #C49A60;border-radius:8px;padding:4px 10px;font-size:10px;font-weight:700;color:#C49A60;letter-spacing:1px;">★ SUPERHOST</div>
+    </div>
+  </div>
+  <div style="margin:0 16px;display:flex;flex-direction:column;gap:10px;">
+    <a href="https://wa.me/393474428794" target="_blank" style="display:flex;align-items:center;gap:14px;background:#FAF7F2;border:1px solid #D8CEC0;border-radius:16px;padding:16px;text-decoration:none;">
+      <div style="width:52px;height:52px;background:#25D366;border-radius:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.126 1.529 5.855L.057 23.57a.75.75 0 0 0 .92.921l5.789-1.501A11.956 11.956 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75a9.726 9.726 0 0 1-4.964-1.355l-.355-.212-3.681.955.984-3.595-.231-.371A9.725 9.725 0 0 1 2.25 12C2.25 6.615 6.615 2.25 12 2.25S21.75 6.615 21.75 12 17.385 21.75 12 21.75z"/></svg></div>
+      <div><div style="font-size:17px;font-weight:700;color:#2A2018;">Enrico</div><div style="font-size:14px;color:#7A6A58;margin-top:2px;">+39 347 442 8794</div></div>
+    </a>
+    <a href="https://wa.me/393407117405" target="_blank" style="display:flex;align-items:center;gap:14px;background:#FAF7F2;border:1px solid #D8CEC0;border-radius:16px;padding:16px;text-decoration:none;">
+      <div style="width:52px;height:52px;background:#25D366;border-radius:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.126 1.529 5.855L.057 23.57a.75.75 0 0 0 .92.921l5.789-1.501A11.956 11.956 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75a9.726 9.726 0 0 1-4.964-1.355l-.355-.212-3.681.955.984-3.595-.231-.371A9.725 9.725 0 0 1 2.25 12C2.25 6.615 6.615 2.25 12 2.25S21.75 6.615 21.75 12 17.385 21.75 12 21.75z"/></svg></div>
+      <div><div style="font-size:17px;font-weight:700;color:#2A2018;">Vincenzo</div><div style="font-size:14px;color:#7A6A58;margin-top:2px;">+39 340 711 7405</div></div>
+    </a>
+  </div>
+
+  <div class="bottom-space"></div>
+</div>
+
+<div id="attrazioni" class="screen lang-it">
+
+  <div class="topbar">
+    <button class="back-btn" onclick="goBack('home')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg>
+      Home
+    </button>
+    <div style="text-align:right">
+      <div class="topbar-brand">ANTRUM</div>
+      <div class="topbar-sub">Loft &amp; Suite</div>
+    </div>
+  </div>
+
+  <div class="section-head">
+    <h2>Attrazioni 🗺️</h2>
+    <p>Tutto a piedi dal loft</p>
+  </div>
+
+  <div class="place-card">
+    <div class="place-header">
+      <div class="place-emoji">🌿</div>
+      <div><div class="place-name">Giardino della Minerva</div><div style="font-size:11px;color:var(--terra);font-weight:600">⏱ 5 min a piedi</div></div>
+    </div>
+    <p class="place-desc">Antico giardino botanico medievale legato alla Scuola Medica Salernitana, la prima scuola di medicina d'Europa. Piante officinali e vista panoramica sul golfo di Salerno.</p>
+    <a class="place-link" href="https://share.google/aN0hftKedDmQ8SYdP" target="_blank">📍 Apri su Google Maps</a>
+  </div>
+
+  <div class="place-card">
+    <div class="place-header">
+      <div class="place-emoji">⛪</div>
+      <div><div class="place-name">Duomo di Salerno</div><div style="font-size:11px;color:var(--terra);font-weight:600">⏱ 3 min a piedi</div></div>
+    </div>
+    <p class="place-desc">Maestosa cattedrale romanica dell'XI secolo dedicata a San Matteo. Imperdibile il quadriportico con colonne antiche, il campanile e i mosaici interni.</p>
+    <a class="place-link" href="https://share.google/0GbzinDcPqWoCxgqN" target="_blank">📍 Apri su Google Maps</a>
+  </div>
+
+  <div class="place-card">
+    <div class="place-header">
+      <div class="place-emoji">🪦</div>
+      <div><div class="place-name">Cripta del Duomo</div><div style="font-size:11px;color:var(--terra);font-weight:600">⏱ 3 min a piedi</div></div>
+    </div>
+    <p class="place-desc">Situata sotto la cattedrale, custodisce le reliquie di San Matteo apostolo. Riccamente decorata in stile barocco con marmi policromi e affreschi suggestivi.</p>
+    <a class="place-link" href="https://share.google/b5QoeiXc1gaFLcgxa" target="_blank">📍 Apri su Google Maps</a>
+  </div>
+
+  <div class="place-card">
+    <div class="place-header">
+      <div class="place-emoji">🏛️</div>
+      <div><div class="place-name">Palazzo Fruscione</div><div style="font-size:11px;color:var(--terra);font-weight:600">⏱ 7 min a piedi</div></div>
+    </div>
+    <p class="place-desc">Straordinario edificio medievale con archi in stile arabo-normanno. Oggi spazio culturale per mostre ed eventi, testimonianza delle civiltà che hanno arricchito Salerno.</p>
+    <a class="place-link" href="https://share.google/aDWgzbeII8b738oiw" target="_blank">📍 Apri su Google Maps</a>
+  </div>
+
+
+  <div class="section-head" style="padding-top:4px">
+    <h2>🚢 Esplora la Costiera</h2>
+  </div>
+
+  <div class="place-card">
+    <div class="place-header">
+      <div class="place-emoji">⛵</div>
+      <div>
+        <div class="place-name">Molo Masuccio Salernitano</div>
+        <div style="font-size:11px;color:var(--terra);font-weight:600">Piazza della Concordia · Molo principale</div>
+      </div>
+    </div>
+    <p class="place-desc">Il molo principale per la Costiera Amalfitana, in pieno centro e a piedi dalla stazione ferroviaria. Fino a 12 partenze al giorno in alta stagione.<br><br>
+    🏖️ <strong>Destinazioni:</strong> Amalfi, Positano, Cetara, Maiori, Minori, Vietri sul Mare<br>
+    🚢 <strong>Compagnie:</strong> Travelmar (biglietteria principale), Grassi Junior</p>
+    <a class="place-link" href="https://maps.app.goo.gl/45ZJPDawAuE7FJzu8" target="_blank">📍 Percorso → Molo Masuccio</a>
+  </div>
+
+  <div class="place-card">
+    <div class="place-header">
+      <div class="place-emoji">⛴️</div>
+      <div>
+        <div class="place-name">Molo Manfredi</div>
+        <div style="font-size:11px;color:var(--terra);font-weight:600">Stazione Marittima Zaha Hadid</div>
+      </div>
+    </div>
+    <p class="place-desc">Situato più a ovest, vicino alla celebre Stazione Marittima di Zaha Hadid. Da qui partono principalmente gli aliscafi veloci.<br><br>
+    🏖️ <strong>Destinazioni:</strong> Amalfi, Positano, Capri, Ischia<br>
+    🚢 <strong>Compagnie:</strong> NLG, Alicost, Positano Jet, Grassi Junior</p>
+    <a class="place-link" href="https://maps.app.goo.gl/BsSfTGPr7tJrZS6G7" target="_blank">📍 Percorso → Molo Manfredi</a>
+  </div>
+
+  <div style="display:flex;gap:10px;margin:0 16px 14px;">
+    <a href="https://www.travelmar.it/" target="_blank" style="flex:1;display:flex;align-items:center;justify-content:center;gap:8px;background:var(--white);border:1px solid var(--beige);border-radius:12px;padding:12px;text-decoration:none;">
+      <span style="font-size:20px">⛴️</span>
+      <div><div style="font-size:12px;font-weight:700;color:var(--dark);">Travelmar</div><div style="font-size:10px;color:var(--mid);">Orari & biglietti</div></div>
+    </a>
+    <a href="https://www.alicost.it/" target="_blank" style="flex:1;display:flex;align-items:center;justify-content:center;gap:8px;background:var(--white);border:1px solid var(--beige);border-radius:12px;padding:12px;text-decoration:none;">
+      <span style="font-size:20px">🚢</span>
+      <div><div style="font-size:12px;font-weight:700;color:var(--dark);">Alicost</div><div style="font-size:10px;color:var(--mid);">Orari & biglietti</div></div>
+    </a>
+  </div>
+  <div class="bottom-space"></div>
+</div>
+
+<div id="ristoranti" class="screen lang-it">
+
+  <div class="topbar">
+    <button class="back-btn" onclick="goBack('home')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg>
+      Home
+    </button>
+    <div style="text-align:right">
+      <div class="topbar-brand">ANTRUM</div>
+      <div class="topbar-sub">Loft &amp; Suite</div>
+    </div>
+  </div>
+
+  <div class="section-head">
+    <h2>Dove mangiare 🍽️</h2>
+    <p>La nostra selezione personale</p>
+  </div>
+
+  <div class="cat-head"><span>🐟</span><h3>Ristoranti di Pesce</h3></div>
+  <a class="rest-card" href="https://g.co/kgs/L1DBvS" target="_blank">
+    <div class="rest-left">
+      <div class="rest-name">Embarcadero</div>
+      <div class="rest-desc">Vista mare, cucina di pesce fresco. Ideale per un'occasione speciale.</div>
+    </div>
+    <div class="rest-right">
+      <div class="rest-price">€€€</div>
+      <div class="rest-maps">📍 Maps</div>
+    </div>
+  </a>
+  <a class="rest-card" href="https://g.co/kgs/aVrUPa" target="_blank">
+    <div class="rest-left">
+      <div class="rest-name">Trattoria da Sasà</div>
+      <div class="rest-desc">Atmosfera familiare, pesce fresco, ottimo rapporto qualità-prezzo.</div>
+    </div>
+    <div class="rest-right">
+      <div class="rest-price">€€</div>
+      <div class="rest-maps">📍 Maps</div>
+    </div>
+  </a>
+
+  <div class="cat-head"><span>🍷</span><h3>Trattorie Tipiche</h3></div>
+  <a class="rest-card" href="https://g.co/kgs/3RR82X" target="_blank">
+    <div class="rest-left">
+      <div class="rest-name">La Botte Pazza</div>
+      <div class="rest-desc">Cucina campana tradizionale, salumi locali e vini del territorio.</div>
+    </div>
+    <div class="rest-right">
+      <div class="rest-price">€€</div>
+      <div class="rest-maps">📍 Maps</div>
+    </div>
+  </a>
+  <a class="rest-card" href="https://g.co/kgs/WiSTrA" target="_blank">
+    <div class="rest-left">
+      <div class="rest-name">Osteria Nonna Maria</div>
+      <div class="rest-desc">Ricette della nonna, porzioni generose, atmosfera autentica.</div>
+    </div>
+    <div class="rest-right">
+      <div class="rest-price">€€</div>
+      <div class="rest-maps">📍 Maps</div>
+    </div>
+  </a>
+
+  <div class="cat-head"><span>🍕</span><h3>Pizza</h3></div>
+  <a class="rest-card" href="https://g.co/kgs/WxLSQX" target="_blank">
+    <div class="rest-left"><div class="rest-name">La Smorfia Pizzeria</div><div class="rest-desc">Impasto a lunga lievitazione, pizza napoletana doc.</div></div>
+    <div class="rest-right"><div class="rest-price">€€</div><div class="rest-maps">📍 Maps</div></div>
+  </a>
+  <a class="rest-card" href="https://g.co/kgs/U6iq1z" target="_blank">
+    <div class="rest-left"><div class="rest-name">Gli Esposito Pizzeria</div><div class="rest-desc">Classici napoletani e creatività, forno a legna.</div></div>
+    <div class="rest-right"><div class="rest-price">€€</div><div class="rest-maps">📍 Maps</div></div>
+  </a>
+  <a class="rest-card" href="https://g.co/kgs/UcQiRN" target="_blank">
+    <div class="rest-left"><div class="rest-name">L'Antica Pizzeria da Michele</div><div class="rest-desc">Solo margherita e marinara. Leggendaria e imbattibile.</div></div>
+    <div class="rest-right"><div class="rest-price">€</div><div class="rest-maps">📍 Maps</div></div>
+  </a>
+  <a class="rest-card" href="https://g.co/kgs/UPNYus" target="_blank">
+    <div class="rest-left"><div class="rest-name">Don Antonio 1970</div><div class="rest-desc">Pizza gourmet con ingredienti selezionati, ambiente elegante.</div></div>
+    <div class="rest-right"><div class="rest-price">€€€</div><div class="rest-maps">📍 Maps</div></div>
+  </a>
+
+  <div class="cat-head"><span>🧀</span><h3>Taglieri & Salumi</h3></div>
+  <a class="rest-card" href="https://g.co/kgs/oUf2UG" target="_blank">
+    <div class="rest-left"><div class="rest-name">Botteghelle 65</div><div class="rest-desc">Enoteca con taglieri di salumi e formaggi campani.</div></div>
+    <div class="rest-right"><div class="rest-price">€€</div><div class="rest-maps">📍 Maps</div></div>
+  </a>
+  <a class="rest-card" href="https://g.co/kgs/szbAfP" target="_blank">
+    <div class="rest-left"><div class="rest-name">Dolci Ricordi</div><div class="rest-desc">Prodotti artigianali locali, ottimi per un aperitivo.</div></div>
+    <div class="rest-right"><div class="rest-price">€€</div><div class="rest-maps">📍 Maps</div></div>
+  </a>
+  <a class="rest-card" href="https://g.co/kgs/oQkq62" target="_blank">
+    <div class="rest-left"><div class="rest-name">Salumeria del Corso</div><div class="rest-desc">Tagliere e calice nel cuore del corso principale.</div></div>
+    <div class="rest-right"><div class="rest-price">€€</div><div class="rest-maps">📍 Maps</div></div>
+  </a>
+
+  <div class="cat-head"><span>☕</span><h3>Bar & Pasticceria</h3></div>
+  <a class="rest-card" href="https://g.co/kgs/LrF594" target="_blank">
+    <div class="rest-left"><div class="rest-name">Landi Pasticceria</div><div class="rest-desc">Storica pasticceria salernitana, cornetti e dolci tipici.</div></div>
+    <div class="rest-right"><div class="rest-price">€</div><div class="rest-maps">📍 Maps</div></div>
+  </a>
+  <a class="rest-card" href="https://g.co/kgs/xZHGh2" target="_blank">
+    <div class="rest-left"><div class="rest-name">Bar Rosa Pasticceria</div><div class="rest-desc">Colazione con vista, pasticceria artigianale.</div></div>
+    <div class="rest-right"><div class="rest-price">€</div><div class="rest-maps">📍 Maps</div></div>
+  </a>
+  <a class="rest-card" href="https://g.co/kgs/yJpeJ2" target="_blank">
+    <div class="rest-left"><div class="rest-name">Bar Rosa al Corso</div><div class="rest-desc">Sul corso principale, ideale per pausa caffè o aperitivo.</div></div>
+    <div class="rest-right"><div class="rest-price">€</div><div class="rest-maps">📍 Maps</div></div>
+  </a>
+
+  <div class="bottom-space"></div>
+</div>
+
+<div id="trasporti" class="screen lang-it">
+
+  <div class="topbar">
+    <button class="back-btn" onclick="goBack('home')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg>
+      Home
+    </button>
+    <div style="text-align:right">
+      <div class="topbar-brand">ANTRUM</div>
+      <div class="topbar-sub">Loft &amp; Suite</div>
+    </div>
+  </div>
+
+  <div class="section-head">
+    <h2>Come muoversi 🚀</h2>
+    <p>Salerno è il punto di partenza perfetto</p>
+  </div>
+
+  <div class="transport-card">
+    <div class="transport-head">
+      <div class="transport-ico">🚂</div>
+      <div class="transport-title"><a href="https://www.trenitalia.com/it.html" target="_blank" style="color:var(--terra);text-decoration:none">Treno ↗</a></div>
+    </div>
+    <div class="transport-items">
+      <div class="transport-item">• <strong>Napoli</strong> — 40 minuti</div>
+      <div class="transport-item">• <strong>Roma</strong> — 2h30 in treno diretto</div>
+      <div class="transport-item">• <strong>Reggio Calabria</strong> — collegamento diretto</div>
+      <div class="transport-item">• <strong>Costiera Cilentana</strong> — treni regionali</div>
+    </div>
+  </div>
+
+  <div class="transport-card">
+    <div class="transport-head">
+      <div class="transport-ico">⛴️</div>
+      <div class="transport-title">Traghetti & Aliscafi</div>
+    </div>
+    <div class="transport-items">
+      <div class="transport-item">• <strong>Porto di Salerno</strong> — <a href="https://www.travelmar.it/" target="_blank" style="color:var(--terra);font-weight:600">Costiera Amalfitana ↗</a> (Amalfi, Positano)</div>
+      <div class="transport-item">• <strong>Capri & Ischia</strong> — circa 1h30 (estate: servizio frequente)</div>
+      <div class="transport-item">• <strong>Travelmar / Alilauro</strong> — principali compagnie</div>
+    </div>
+  </div>
+
+  <div class="transport-card">
+    <div class="transport-head">
+      <div class="transport-ico">🚗</div>
+      <div class="transport-title">Taxi, Auto & Parcheggio</div>
+    </div>
+    <div class="transport-items">
+      <div class="transport-item">• <strong>Taxi</strong> — <a href="tel:089757575" style="color:var(--terra)">089 757575</a> oppure WhatsApp <a href="https://wa.me/393770897575" target="_blank" style="color:var(--terra)">+39 377 089 7575</a></div>
+      <div class="transport-item">• <strong>Parcheggio consigliato</strong> — <a href="https://maps.app.goo.gl/pcoWAG8neqBBM5yY6" target="_blank" style="color:var(--terra);font-weight:600">Apri su Google Maps</a></div>
+      <div class="transport-item">• <strong>Noleggio auto & scooter</strong> — disponibili nei pressi della Stazione Ferroviaria di Salerno</div>
+    </div>
+  </div>
+
+  <div class="transport-card">
+    <div class="transport-head">
+      <div class="transport-ico">✈️</div>
+      <div class="transport-title">Aeroporto</div>
+    </div>
+    <div class="transport-items">
+      <div class="transport-item">• <strong>Napoli Capodichino (NAP)</strong> — 60 km</div>
+      <div class="transport-item">• <strong>Salerno Costa d'Amalfi (QSR)</strong> — 15 km (voli nazionali e internazionali)</div>
+      <div class="transport-item">• <strong>In treno</strong> — Napoli Centrale → Salerno (40 min)</div>
+      <div class="transport-item">• <strong>In taxi</strong> — circa 80–90 €</div>
+    </div>
+  </div>
+
+  <div class="bottom-space"></div>
+</div>
+
+
+<div id="home-en" class="screen lang-en">
+
+  <div class="hero">
+    <div class="hero-superhost">★ SUPERHOST</div>
+    <div class="hero-chip">✦ OLD TOWN · SALERNO</div>
+    <div class="hero-title">Antrum<br><em>Loft</em></div>
+    <div class="hero-addr">Via Torquato Tasso 31 — Salerno</div>
+  </div>
+
+  <div class="quick-strip">
+    <div class="quick-item">
+      <div class="quick-icon">🔑</div>
+      <div class="quick-label">Check-in</div>
+      <div class="quick-val">15:00</div>
+    </div>
+    <div class="quick-item">
+      <div class="quick-icon">🚪</div>
+      <div class="quick-label">Check-out</div>
+      <div class="quick-val">10:00</div>
+    </div>
+    <div class="quick-item">
+      <div class="quick-icon">📶</div>
+      <div class="quick-label">WiFi</div>
+      <div class="quick-val">718 Mbps</div>
+    </div>
+    <div class="quick-item" style="cursor:pointer" onclick="window.open('https://www.google.com/maps/dir/?api=1&destination=Via+Torquato+Tasso+31,+84121+Salerno','_blank')">
+      <div class="quick-icon">🧭</div>
+      <div class="quick-label">Navigate</div>
+      <div class="quick-val">Maps</div>
+    </div>
+  </div>
+
+  <div class="welcome-box">
+    <h3>Welcome! 👋</h3>
+    <p>We are Antrum, two brothers who created this loft in the heart of Salerno's old town. Always here for anything you need!</p>
+    <div class="host-badge">★ Enrico &amp; Vincenzo</div>
+  </div>
+
+  <div class="section-head">
+    <h2>Explore the guide</h2>
+    <p>Everything you need in one tap</p>
+  </div>
+
+  <div class="card" onclick="goTo('soggiorno')">
+    <div class="card-inner">
+      <div class="card-icon-wrap terra">🛏️</div>
+      <div class="card-text">
+        <div class="card-title">Your stay</div>
+        <div class="card-desc">Check-in, house rules, jacuzzi</div>
+      </div>
+      <div class="card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></div>
+    </div>
+  </div>
+
+  <div class="card" onclick="goTo('attrazioni')">
+    <div class="card-inner">
+      <div class="card-icon-wrap sage">🗺️</div>
+      <div class="card-text">
+        <div class="card-title">Attractions in Salerno</div>
+        <div class="card-desc">Must-see places steps away</div>
+      </div>
+      <div class="card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></div>
+    </div>
+  </div>
+
+  <div class="card" onclick="goTo('ristoranti')">
+    <div class="card-inner">
+      <div class="card-icon-wrap gold">🍽️</div>
+      <div class="card-text">
+        <div class="card-title">Where to eat</div>
+        <div class="card-desc">Selected restaurants, pizzerias, bars</div>
+      </div>
+      <div class="card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></div>
+    </div>
+  </div>
+
+  <div class="card" onclick="goTo('trasporti')">
+    <div class="card-inner">
+      <div class="card-icon-wrap dark">🚀</div>
+      <div class="card-text">
+        <div class="card-title">Getting around</div>
+        <div class="card-desc">Train, ferries, taxi, airport</div>
+      </div>
+      <div class="card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></div>
+    </div>
+  </div>
+
+  <div class="bottom-space"></div>
+</div>
+
+<div id="soggiorno-en" class="screen lang-en">
+
+  <div class="topbar">
+    <button class="back-btn" onclick="goBack('home')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg>
+      Home
+    </button>
+    <div style="text-align:right">
+      <div class="topbar-brand">ANTRUM</div>
+      <div class="topbar-sub">Loft &amp; Suite</div>
+    </div>
+  </div>
+
+  <div class="section-head">
+    <h2>Your stay 🛏️</h2>
+    <p>Everything you need to know</p>
+  </div>
+
+  <div style="background:var(--white);border-radius:16px;margin:0 16px 14px;border:1px solid var(--beige);overflow:hidden;box-shadow:0 2px 10px var(--shadow)">
+    <div class="info-row">
+      <div class="info-icon">🔑</div>
+      <div><div class="info-label">Check-in</div><div class="info-val">from 3:00 PM</div></div>
+    </div>
+    <div class="info-row">
+      <div class="info-icon">🚪</div>
+      <div><div class="info-label">Check-out</div><div class="info-val">by 10:00 AM</div></div>
+    </div>
+    <div class="info-row">
+      <div class="info-icon">👥</div>
+      <div><div class="info-label">Max guests</div><div class="info-val">2 people</div></div>
+    </div>
+    <div class="info-row">
+      <div class="info-icon">📶</div>
+      <div><div class="info-label">WiFi · Fibre</div><div class="info-val">718 Mbps</div><div class="info-label" style="margin-top:3px;font-size:12px;color:var(--dark);font-weight:600;letter-spacing:0.5px;font-family:monospace;text-transform:none">📶 TIM-38262099</div><div class="info-label" style="margin-top:2px;font-size:12px;color:var(--dark);font-weight:600;letter-spacing:0.5px;font-family:monospace;text-transform:none">🔑 dT34tzUZQUy54D6bADhDkKAA</div></div>
+    </div>
+    <div class="info-row">
+      <div class="info-icon">🔒</div>
+      <div><div class="info-label">Access</div><div class="info-val">Self check-in Smart Lock</div></div>
+    </div>
+    <div class="info-row">
+      <div class="info-icon">📺</div>
+      <div><div class="info-label">Smart TV</div><div class="info-val">50 inches</div></div>
+    </div>
+  </div>
+
+  <div class="section-head" style="padding-top:8px">
+    <h2>Jacuzzi 🛁</h2>
+  </div>
+  <div style="background:var(--white);border-radius:16px;margin:0 16px 14px;border:1px solid var(--beige);padding:18px;box-shadow:0 2px 10px var(--shadow)">
+    <p style="font-size:13.5px;color:var(--mid);line-height:1.7">The corner jacuzzi is set within a stone arch, right in front of the double bed. Pure relaxation in the heart of Salerno's historic centre.</p>
+  </div>
+
+
+  <div class="section-head" style="padding-top:8px">
+    <h2>How to check-out 🚪</h2>
+  </div>
+  <div style="background:var(--white);border-radius:16px;margin:0 16px 14px;border:1px solid var(--beige);overflow:hidden;box-shadow:0 2px 10px var(--shadow)">
+    <div class="info-row">
+      <div class="info-icon">🛏️</div>
+      <div><div class="info-label">Towels</div><div class="info-val">Gather all used towels on the bed</div></div>
+    </div>
+    <div class="info-row">
+      <div class="info-icon">🔌</div>
+      <div><div class="info-label">Turn everything off</div><div class="info-val">Make sure everything is switched off</div></div>
+    </div>
+    <div class="info-row" style="border-bottom:none">
+      <div class="info-icon">🗝️</div>
+      <div><div class="info-label">Return the keys</div><div class="info-val">Place the keys in the Locker using the same access code</div></div>
+    </div>
+  </div>
+
+  <div class="section-head" style="padding-top:8px">
+    <h2>House rules 📋</h2>
+  </div>
+  <div style="background:var(--white);border-radius:16px;margin:0 16px 14px;border:1px solid var(--beige);padding:0;box-shadow:0 2px 10px var(--shadow);overflow:hidden">
+    <div class="info-row">
+      <div class="info-icon">🚭</div>
+      <div><div class="info-label">Smoking</div><div class="info-val">Not allowed</div></div>
+    </div>
+    <div class="info-row">
+      <div class="info-icon">🐾</div>
+      <div><div class="info-label">Pets</div><div class="info-val">Not allowed</div></div>
+    </div>
+  </div>
+
+
+  <div class="section-head" style="padding-top:8px">
+    <h2>How to reach us 📍</h2>
+  </div>
+  <div style="background:var(--white);border-radius:16px;margin:0 16px 14px;border:1px solid var(--beige);overflow:hidden;box-shadow:0 2px 10px var(--shadow)">
+    <a href="https://maps.app.goo.gl/45ZJPDawAuE7FJzu8" target="_blank" class="info-row" style="text-decoration:none;display:flex">
+      <div class="info-icon">🚂</div>
+      <div style="flex:1"><div class="info-label">From the Train Station</div><div class="info-val" style="color:var(--terra)">Open directions →</div></div>
+    </a>
+    <a href="https://maps.app.goo.gl/BsSfTGPr7tJrZS6G7" target="_blank" class="info-row" style="text-decoration:none;display:flex">
+      <div class="info-icon">⛵</div>
+      <div style="flex:1"><div class="info-label">From Molo Manfredi</div><div class="info-val" style="color:var(--terra)">Open directions →</div></div>
+    </a>
+    <a href="https://maps.app.goo.gl/j6RhLWQMJ8EG2cXh9" target="_blank" class="info-row" style="text-decoration:none;display:flex;border-bottom:none">
+      <div class="info-icon">🏛️</div>
+      <div style="flex:1"><div class="info-label">From Piazza della Concordia</div><div class="info-val" style="color:var(--terra)">Open directions →</div></div>
+    </a>
+  </div>
+
+  <div class="section-head" style="padding-top:8px">
+    <h2>Contact us 💬</h2>
+  </div>
+  <div style="margin:0 16px 10px;background:linear-gradient(135deg,#261C12,#3A2A1A);border-radius:18px;padding:20px 18px;display:flex;align-items:center;gap:16px;">
+    <div style="width:62px;height:62px;background:#3A2A1A;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:30px;flex-shrink:0;">👨‍💼</div>
+    <div>
+      <div style="font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:#F7F3ED;">Enrico & Vincenzo</div>
+      <div style="font-size:13px;color:#C49A60;margin-top:4px;">★★★★★ 5,0 · Superhost</div>
+      <div style="font-size:12px;color:rgba(247,243,237,0.5);margin-top:3px;">Replies within 1 hour · 100% response rate</div>
+      <div style="display:inline-block;margin-top:8px;background:transparent;border:1px solid #C49A60;border-radius:8px;padding:4px 10px;font-size:10px;font-weight:700;color:#C49A60;letter-spacing:1px;">★ SUPERHOST</div>
+    </div>
+  </div>
+  <div style="margin:0 16px;display:flex;flex-direction:column;gap:10px;">
+    <a href="https://wa.me/393474428794" target="_blank" style="display:flex;align-items:center;gap:14px;background:#FAF7F2;border:1px solid #D8CEC0;border-radius:16px;padding:16px;text-decoration:none;">
+      <div style="width:52px;height:52px;background:#25D366;border-radius:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.126 1.529 5.855L.057 23.57a.75.75 0 0 0 .92.921l5.789-1.501A11.956 11.956 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75a9.726 9.726 0 0 1-4.964-1.355l-.355-.212-3.681.955.984-3.595-.231-.371A9.725 9.725 0 0 1 2.25 12C2.25 6.615 6.615 2.25 12 2.25S21.75 6.615 21.75 12 17.385 21.75 12 21.75z"/></svg></div>
+      <div><div style="font-size:17px;font-weight:700;color:#2A2018;">Enrico</div><div style="font-size:14px;color:#7A6A58;margin-top:2px;">+39 347 442 8794</div></div>
+    </a>
+    <a href="https://wa.me/393407117405" target="_blank" style="display:flex;align-items:center;gap:14px;background:#FAF7F2;border:1px solid #D8CEC0;border-radius:16px;padding:16px;text-decoration:none;">
+      <div style="width:52px;height:52px;background:#25D366;border-radius:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.126 1.529 5.855L.057 23.57a.75.75 0 0 0 .92.921l5.789-1.501A11.956 11.956 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75a9.726 9.726 0 0 1-4.964-1.355l-.355-.212-3.681.955.984-3.595-.231-.371A9.725 9.725 0 0 1 2.25 12C2.25 6.615 6.615 2.25 12 2.25S21.75 6.615 21.75 12 17.385 21.75 12 21.75z"/></svg></div>
+      <div><div style="font-size:17px;font-weight:700;color:#2A2018;">Vincenzo</div><div style="font-size:14px;color:#7A6A58;margin-top:2px;">+39 340 711 7405</div></div>
+    </a>
+  </div>
+
+  <div class="bottom-space"></div>
+</div>
+
+<div id="attrazioni-en" class="screen lang-en">
+
+  <div class="topbar">
+    <button class="back-btn" onclick="goBack('home')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg>
+      Home
+    </button>
+    <div style="text-align:right">
+      <div class="topbar-brand">ANTRUM</div>
+      <div class="topbar-sub">Loft &amp; Suite</div>
+    </div>
+  </div>
+
+  <div class="section-head">
+    <h2>Attractions 🗺️</h2>
+    <p>All walkable from the loft</p>
+  </div>
+
+  <div class="place-card">
+    <div class="place-header">
+      <div class="place-emoji">🌿</div>
+      <div><div class="place-name">Giardino della Minerva</div><div style="font-size:11px;color:var(--terra);font-weight:600">⏱ 5 min walk</div></div>
+    </div>
+    <p class="place-desc">Ancient medieval botanical garden linked to the Salerno Medical School, the first medical school in Europe. Medicinal plants and a panoramic view over the Gulf of Salerno.</p>
+    <a class="place-link" href="https://share.google/aN0hftKedDmQ8SYdP" target="_blank">📍 Open in Google Maps</a>
+  </div>
+
+  <div class="place-card">
+    <div class="place-header">
+      <div class="place-emoji">⛪</div>
+      <div><div class="place-name">Duomo di Salerno</div><div style="font-size:11px;color:var(--terra);font-weight:600">⏱ 3 min walk</div></div>
+    </div>
+    <p class="place-desc">Majestic 11th-century Romanesque cathedral dedicated to Saint Matthew. A must-see: the quadriporticus with ancient columns, the bell tower and the interior mosaics.</p>
+    <a class="place-link" href="https://share.google/0GbzinDcPqWoCxgqN" target="_blank">📍 Open in Google Maps</a>
+  </div>
+
+  <div class="place-card">
+    <div class="place-header">
+      <div class="place-emoji">🪦</div>
+      <div><div class="place-name">Cripta del Duomo</div><div style="font-size:11px;color:var(--terra);font-weight:600">⏱ 3 min walk</div></div>
+    </div>
+    <p class="place-desc">Located beneath the cathedral, it houses the relics of Saint Matthew the Apostle. Richly decorated in Baroque style with polychrome marbles and evocative frescoes.</p>
+    <a class="place-link" href="https://share.google/b5QoeiXc1gaFLcgxa" target="_blank">📍 Open in Google Maps</a>
+  </div>
+
+  <div class="place-card">
+    <div class="place-header">
+      <div class="place-emoji">🏛️</div>
+      <div><div class="place-name">Palazzo Fruscione</div><div style="font-size:11px;color:var(--terra);font-weight:600">⏱ 7 min walk</div></div>
+    </div>
+    <p class="place-desc">Extraordinary medieval building with Arab-Norman arches. Today a cultural space for exhibitions and events, a testament to the civilisations that have enriched Salerno.</p>
+    <a class="place-link" href="https://share.google/aDWgzbeII8b738oiw" target="_blank">📍 Open in Google Maps</a>
+  </div>
+
+
+  <div class="section-head" style="padding-top:4px">
+    <h2>🚢 Explore the Amalfi Coast</h2>
+  </div>
+
+  <div class="place-card">
+    <div class="place-header">
+      <div class="place-emoji">⛵</div>
+      <div>
+        <div class="place-name">Molo Masuccio Salernitano</div>
+        <div style="font-size:11px;color:var(--terra);font-weight:600">Piazza della Concordia · Main pier</div>
+      </div>
+    </div>
+    <p class="place-desc">The main pier for the Amalfi Coast, right in the city centre and walkable from the train station. Up to 12 departures per day in high season.<br><br>
+    🏖️ <strong>Destinations:</strong> Amalfi, Positano, Cetara, Maiori, Minori, Vietri sul Mare<br>
+    🚢 <strong>Companies:</strong> Travelmar (main ticket office), Grassi Junior</p>
+    <a class="place-link" href="https://maps.app.goo.gl/45ZJPDawAuE7FJzu8" target="_blank">📍 Directions → Molo Masuccio</a>
+  </div>
+
+  <div class="place-card">
+    <div class="place-header">
+      <div class="place-emoji">⛴️</div>
+      <div>
+        <div class="place-name">Molo Manfredi</div>
+        <div style="font-size:11px;color:var(--terra);font-weight:600">Zaha Hadid Maritime Station</div>
+      </div>
+    </div>
+    <p class="place-desc">Located further west, next to the iconic Zaha Hadid Maritime Station. This is the main departure point for fast hydrofoils.<br><br>
+    🏖️ <strong>Destinations:</strong> Amalfi, Positano, Capri, Ischia<br>
+    🚢 <strong>Companies:</strong> NLG, Alicost, Positano Jet, Grassi Junior</p>
+    <a class="place-link" href="https://maps.app.goo.gl/BsSfTGPr7tJrZS6G7" target="_blank">📍 Directions → Molo Manfredi</a>
+  </div>
+
+  <div style="display:flex;gap:10px;margin:0 16px 14px;">
+    <a href="https://www.travelmar.it/" target="_blank" style="flex:1;display:flex;align-items:center;justify-content:center;gap:8px;background:var(--white);border:1px solid var(--beige);border-radius:12px;padding:12px;text-decoration:none;">
+      <span style="font-size:20px">⛴️</span>
+      <div><div style="font-size:12px;font-weight:700;color:var(--dark);">Travelmar</div><div style="font-size:10px;color:var(--mid);">Schedules & tickets</div></div>
+    </a>
+    <a href="https://www.alicost.it/" target="_blank" style="flex:1;display:flex;align-items:center;justify-content:center;gap:8px;background:var(--white);border:1px solid var(--beige);border-radius:12px;padding:12px;text-decoration:none;">
+      <span style="font-size:20px">🚢</span>
+      <div><div style="font-size:12px;font-weight:700;color:var(--dark);">Alicost</div><div style="font-size:10px;color:var(--mid);">Schedules & tickets</div></div>
+    </a>
+  </div>
+  <div class="bottom-space"></div>
+</div>
+
+<div id="ristoranti-en" class="screen lang-en">
+
+  <div class="topbar">
+    <button class="back-btn" onclick="goBack('home')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg>
+      Home
+    </button>
+    <div style="text-align:right">
+      <div class="topbar-brand">ANTRUM</div>
+      <div class="topbar-sub">Loft &amp; Suite</div>
+    </div>
+  </div>
+
+  <div class="section-head">
+    <h2>Where to eat 🍽️</h2>
+    <p>Our personal selection</p>
+  </div>
+
+  <div class="cat-head"><span>🐟</span><h3>Seafood Restaurants</h3></div>
+  <a class="rest-card" href="https://g.co/kgs/L1DBvS" target="_blank">
+    <div class="rest-left">
+      <div class="rest-name">Embarcadero</div>
+      <div class="rest-desc">Sea view, fresh fish cuisine. Perfect for a special occasion.</div>
+    </div>
+    <div class="rest-right">
+      <div class="rest-price">€€€</div>
+      <div class="rest-maps">📍 Maps</div>
+    </div>
+  </a>
+  <a class="rest-card" href="https://g.co/kgs/aVrUPa" target="_blank">
+    <div class="rest-left">
+      <div class="rest-name">Trattoria da Sasà</div>
+      <div class="rest-desc">Family atmosphere, fresh fish, excellent value for money.</div>
+    </div>
+    <div class="rest-right">
+      <div class="rest-price">€€</div>
+      <div class="rest-maps">📍 Maps</div>
+    </div>
+  </a>
+
+  <div class="cat-head"><span>🍷</span><h3>Traditional Trattorias</h3></div>
+  <a class="rest-card" href="https://g.co/kgs/3RR82X" target="_blank">
+    <div class="rest-left">
+      <div class="rest-name">La Botte Pazza</div>
+      <div class="rest-desc">Traditional Campanian cuisine, local cured meats and regional wines.</div>
+    </div>
+    <div class="rest-right">
+      <div class="rest-price">€€</div>
+      <div class="rest-maps">📍 Maps</div>
+    </div>
+  </a>
+  <a class="rest-card" href="https://g.co/kgs/WiSTrA" target="_blank">
+    <div class="rest-left">
+      <div class="rest-name">Osteria Nonna Maria</div>
+      <div class="rest-desc">Grandma's recipes, generous portions, authentic atmosphere.</div>
+    </div>
+    <div class="rest-right">
+      <div class="rest-price">€€</div>
+      <div class="rest-maps">📍 Maps</div>
+    </div>
+  </a>
+
+  <div class="cat-head"><span>🍕</span><h3>Pizza</h3></div>
+  <a class="rest-card" href="https://g.co/kgs/WxLSQX" target="_blank">
+    <div class="rest-left"><div class="rest-name">La Smorfia Pizzeria</div><div class="rest-desc">Long-leavened dough, genuine Neapolitan pizza.</div></div>
+    <div class="rest-right"><div class="rest-price">€€</div><div class="rest-maps">📍 Maps</div></div>
+  </a>
+  <a class="rest-card" href="https://g.co/kgs/U6iq1z" target="_blank">
+    <div class="rest-left"><div class="rest-name">Gli Esposito Pizzeria</div><div class="rest-desc">Neapolitan classics and creativity, wood-fired oven.</div></div>
+    <div class="rest-right"><div class="rest-price">€€</div><div class="rest-maps">📍 Maps</div></div>
+  </a>
+  <a class="rest-card" href="https://g.co/kgs/UcQiRN" target="_blank">
+    <div class="rest-left"><div class="rest-name">L'Antica Pizzeria da Michele</div><div class="rest-desc">Only margherita and marinara. Legendary and unbeatable.</div></div>
+    <div class="rest-right"><div class="rest-price">€</div><div class="rest-maps">📍 Maps</div></div>
+  </a>
+  <a class="rest-card" href="https://g.co/kgs/UPNYus" target="_blank">
+    <div class="rest-left"><div class="rest-name">Don Antonio 1970</div><div class="rest-desc">Gourmet pizza with selected ingredients, elegant setting.</div></div>
+    <div class="rest-right"><div class="rest-price">€€€</div><div class="rest-maps">📍 Maps</div></div>
+  </a>
+
+  <div class="cat-head"><span>🧀</span><h3>Charcuterie Boards</h3></div>
+  <a class="rest-card" href="https://g.co/kgs/oUf2UG" target="_blank">
+    <div class="rest-left"><div class="rest-name">Botteghelle 65</div><div class="rest-desc">Wine bar with boards of Campanian cured meats and cheeses.</div></div>
+    <div class="rest-right"><div class="rest-price">€€</div><div class="rest-maps">📍 Maps</div></div>
+  </a>
+  <a class="rest-card" href="https://g.co/kgs/szbAfP" target="_blank">
+    <div class="rest-left"><div class="rest-name">Dolci Ricordi</div><div class="rest-desc">Local artisan products, great for an aperitivo.</div></div>
+    <div class="rest-right"><div class="rest-price">€€</div><div class="rest-maps">📍 Maps</div></div>
+  </a>
+  <a class="rest-card" href="https://g.co/kgs/oQkq62" target="_blank">
+    <div class="rest-left"><div class="rest-name">Salumeria del Corso</div><div class="rest-desc">Charcuterie board and glass of wine on the main street.</div></div>
+    <div class="rest-right"><div class="rest-price">€€</div><div class="rest-maps">📍 Maps</div></div>
+  </a>
+
+  <div class="cat-head"><span>☕</span><h3>Cafés & Pastry Shops</h3></div>
+  <a class="rest-card" href="https://g.co/kgs/LrF594" target="_blank">
+    <div class="rest-left"><div class="rest-name">Landi Pasticceria</div><div class="rest-desc">Historic Salerno pastry shop, croissants and traditional sweets.</div></div>
+    <div class="rest-right"><div class="rest-price">€</div><div class="rest-maps">📍 Maps</div></div>
+  </a>
+  <a class="rest-card" href="https://g.co/kgs/xZHGh2" target="_blank">
+    <div class="rest-left"><div class="rest-name">Bar Rosa Pasticceria</div><div class="rest-desc">Breakfast with a view, artisan pastries.</div></div>
+    <div class="rest-right"><div class="rest-price">€</div><div class="rest-maps">📍 Maps</div></div>
+  </a>
+  <a class="rest-card" href="https://g.co/kgs/yJpeJ2" target="_blank">
+    <div class="rest-left"><div class="rest-name">Bar Rosa al Corso</div><div class="rest-desc">On the main street, perfect for a coffee break or aperitivo.</div></div>
+    <div class="rest-right"><div class="rest-price">€</div><div class="rest-maps">📍 Maps</div></div>
+  </a>
+
+  <div class="bottom-space"></div>
+</div>
+
+<div id="trasporti-en" class="screen lang-en">
+
+  <div class="topbar">
+    <button class="back-btn" onclick="goBack('home')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg>
+      Home
+    </button>
+    <div style="text-align:right">
+      <div class="topbar-brand">ANTRUM</div>
+      <div class="topbar-sub">Loft &amp; Suite</div>
+    </div>
+  </div>
+
+  <div class="section-head">
+    <h2>Getting around 🚀</h2>
+    <p>Salerno is the perfect starting point</p>
+  </div>
+
+  <div class="transport-card">
+    <div class="transport-head">
+      <div class="transport-ico">🚂</div>
+      <div class="transport-title"><a href="https://www.trenitalia.com/it.html" target="_blank" style="color:var(--terra);text-decoration:none">Train ↗</a></div>
+    </div>
+    <div class="transport-items">
+      <div class="transport-item">• <strong>Naples</strong> — 40 minutes</div>
+      <div class="transport-item">• <strong>Rome</strong> — 2h30 by direct train</div>
+      <div class="transport-item">• <strong>Reggio Calabria</strong> — direct connection</div>
+      <div class="transport-item">• <strong>Cilento Coast</strong> — regional trains</div>
+    </div>
+  </div>
+
+  <div class="transport-card">
+    <div class="transport-head">
+      <div class="transport-ico">⛴️</div>
+      <div class="transport-title">Ferries & Hydrofoils</div>
+    </div>
+    <div class="transport-items">
+      <div class="transport-item">• <strong>Port of Salerno</strong> — <a href="https://www.travelmar.it/" target="_blank" style="color:var(--terra);font-weight:600">Amalfi Coast ↗</a> (Amalfi, Positano)</div>
+      <div class="transport-item">• <strong>Capri & Ischia</strong> — approx. 1h30 (summer: frequent service)</div>
+      <div class="transport-item">• <strong>Travelmar / Alilauro</strong> — main companies</div>
+    </div>
+  </div>
+
+  <div class="transport-card">
+    <div class="transport-head">
+      <div class="transport-ico">🚗</div>
+      <div class="transport-title">Taxi, Car & Parking</div>
+    </div>
+    <div class="transport-items">
+      <div class="transport-item">• <strong>Taxi</strong> — <a href="tel:089757575" style="color:var(--terra)">089 757575</a> or WhatsApp <a href="https://wa.me/393770897575" target="_blank" style="color:var(--terra)">+39 377 089 7575</a></div>
+      <div class="transport-item">• <strong>Recommended parking</strong> — <a href="https://maps.app.goo.gl/pcoWAG8neqBBM5yY6" target="_blank" style="color:var(--terra);font-weight:600">Open in Google Maps</a></div>
+      <div class="transport-item">• <strong>Car & scooter rental</strong> — available near Salerno Train Station</div>
+    </div>
+  </div>
+
+  <div class="transport-card">
+    <div class="transport-head">
+      <div class="transport-ico">✈️</div>
+      <div class="transport-title">Airport</div>
+    </div>
+    <div class="transport-items">
+      <div class="transport-item">• <strong>Naples Capodichino (NAP)</strong> — 60 km</div>
+      <div class="transport-item">• <strong>Salerno Costa d'Amalfi (QSR)</strong> — 15 km (domestic & international flights)</div>
+      <div class="transport-item">• <strong>By train</strong> — Naples Centrale → Salerno (40 min)</div>
+      <div class="transport-item">• <strong>By taxi</strong> — approx. 80–90 €</div>
+    </div>
+  </div>
+
+  <div class="bottom-space"></div>
+</div>
+
+
+<nav class="bottom-nav">
+  <button class="nav-btn active" id="nav-home" onclick="goTo('home')">
+    <span class="nav-ico">🏠</span>
+    <span class="nav-lbl">Home</span>
+  </button>
+  <button class="nav-btn" id="nav-soggiorno" onclick="goTo('soggiorno')">
+    <span class="nav-ico">🛏️</span>
+    <span class="nav-lbl">Soggiorno</span>
+  </button>
+  <button class="nav-btn" id="nav-attrazioni" onclick="goTo('attrazioni')">
+    <span class="nav-ico">🗺️</span>
+    <span class="nav-lbl">Luoghi</span>
+  </button>
+  <button class="nav-btn" id="nav-ristoranti" onclick="goTo('ristoranti')">
+    <span class="nav-ico">🍽️</span>
+    <span class="nav-lbl">Mangiare</span>
+  </button>
+  <button class="nav-btn" id="nav-trasporti" onclick="goTo('trasporti')">
+    <span class="nav-ico">🚀</span>
+    <span class="nav-lbl">Muoversi</span>
+  </button>
+</nav>
+
+<script>
+
+  let currentLang = localStorage.getItem('antrum_lang') || 'it';
+  let currentScreen = 'home';
+
+  function setLang(lang) {
+    currentLang = lang;
+    localStorage.setItem('antrum_lang', lang);
+    
+    // Nascondo tutti gli screen
+    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+    
+    // Mostro lo screen corretto nella lingua giusta
+    const sid = lang === 'it' ? currentScreen : currentScreen + '-en';
+    const el = document.getElementById(sid);
+    if (el) el.classList.add('active');
+    
+    // Aggiorno nav labels
+    const navLabels = lang === 'it'
+      ? {home:'Home', soggiorno:'Soggiorno', attrazioni:'Luoghi', ristoranti:'Mangiare', trasporti:'Muoversi'}
+      : {home:'Home', soggiorno:'Stay', attrazioni:'Places', ristoranti:'Eat', trasporti:'Travel'};
+    Object.entries(navLabels).forEach(([id, lbl]) => {
+      const btn = document.getElementById('nav-' + id);
+      if (btn) btn.querySelector('.nav-lbl').textContent = lbl;
+    });
+    
+    // Aggiorno bottoni switcher
+    document.getElementById('btn-it').style.background = lang === 'it' ? 'var(--terra)' : 'transparent';
+    document.getElementById('btn-it').style.color = lang === 'it' ? '#fff' : 'var(--mid)';
+    document.getElementById('btn-en').style.background = lang === 'en' ? 'var(--terra)' : 'transparent';
+    document.getElementById('btn-en').style.color = lang === 'en' ? '#fff' : 'var(--mid)';
+    document.documentElement.lang = lang;
+  }
+
+  function goTo(id) {
+    const oldId = currentLang === 'it' ? currentScreen : currentScreen + '-en';
+    document.getElementById(oldId).classList.remove('active', 'back-anim');
+    currentScreen = id;
+    const newId = currentLang === 'it' ? id : id + '-en';
+    const next = document.getElementById(newId);
+    next.classList.remove('back-anim');
+    next.classList.add('active');
+    next.scrollTop = 0;
+    window.scrollTo(0, 0);
+    updateNav(id);
+  }
+
+  function goBack(id) {
+    const oldId = currentLang === 'it' ? currentScreen : currentScreen + '-en';
+    document.getElementById(oldId).classList.remove('active');
+    currentScreen = id;
+    const newId = currentLang === 'it' ? id : id + '-en';
+    const prev = document.getElementById(newId);
+    prev.classList.add('back-anim', 'active');
+    window.scrollTo(0, 0);
+    updateNav(id);
+  }
+
+  function updateNav(id) {
+    document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+    const btn = document.getElementById('nav-' + id);
+    if (btn) btn.classList.add('active');
+  }
+
+  document.addEventListener('DOMContentLoaded', () => setLang(currentLang));
+
+</script>
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Antrum — Salerno</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: #F0EBE3;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 32px 20px;
+  }
+  .container {
+    max-width: 400px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+  }
+  .apt-card {
+    background: #1C1710;
+    border: 1px solid #2A2018;
+    border-radius: 20px;
+    overflow: hidden;
+    text-decoration: none;
+    display: block;
+    transition: background 0.18s;
+  }
+  .apt-card:active, .apt-card:hover { background: #241C10; }
+  .apt-header {
+    padding: 22px 22px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .apt-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    color: #F7F3ED;
+  }
+  .apt-name em { font-style: italic; color: #C9A050; }
+  .apt-addr {
+    font-size: 11px;
+    color: rgba(247,243,237,0.35);
+    margin-top: 4px;
+  }
+  .apt-badge {
+    background: rgba(201,160,80,0.12);
+    border: 1px solid rgba(201,160,80,0.3);
+    border-radius: 8px;
+    padding: 5px 10px;
+    font-size: 9px;
+    font-weight: 700;
+    color: #C9A050;
+    letter-spacing: 1px;
+    flex-shrink: 0;
+  }
+  .apt-footer {
+    border-top: 1px solid #2A2018;
+    padding: 14px 22px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .apt-cta {
+    font-size: 12px;
+    font-weight: 600;
+    color: rgba(247,243,237,0.45);
+    letter-spacing: 0.3px;
+  }
+  .apt-cta span {
+    display: inline-flex; align-items: center; gap: 6px;
+  }
+  .apt-arrow {
+    color: rgba(201,160,80,0.6);
+    font-size: 20px;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- LOFT -->
+  <a class="apt-card" href="antrum_loft.html">
+    <div class="apt-header">
+      <div>
+        <div class="apt-name">Antrum <em>Loft</em></div>
+        <div class="apt-addr">Via Torquato Tasso 31 · Centro Storico</div>
+      </div>
+      <div class="apt-badge">★ SUPERHOST</div>
+    </div>
+  </a>
+
+  <!-- SUITE -->
+  <a class="apt-card" href="antrum_suite.html">
+    <div class="apt-header">
+      <div>
+        <div class="apt-name">Antrum <em>Suite</em></div>
+        <div class="apt-addr">Via Masuccio Salernitano 56 · Centro Storico</div>
+      </div>
+      <div class="apt-badge">★ SUPERHOST</div>
+    </div>
+  </a>
+
+</div>
+</body>
+</html>
